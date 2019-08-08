@@ -21,7 +21,7 @@ class HomePage extends React.Component {
                 <p>You're logged in with React!!</p>
                 <h3>All registered users:</h3>
                 {users.loading && <em>Loading users...</em>}
-                {users.error && <span className="text-danger">ERROR: {users.error}</span>}
+                {users.error && <span className="text-danger">ERRORr: {users.error}</span>}
                 {users.items &&
                     <ul>
                         {users.items.data.map((user, index) =>
