@@ -18,10 +18,10 @@ class HomePage extends React.Component {
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h3>Hi {user.name}!</h3>
-                <p>You're logged in with React!!</p>
+                <p>You're logged in with React!! homePage</p>
                 <h3>All registered users:</h3>
                 {users.loading && <em>Loading users...</em>}
-                {users.error && <span className="text-danger">ERRORr: {users.error}</span>}
+                {users.error && <span className="text-danger">ERROR: {users.error}</span>}
                 {users.items &&
                     <ul>
                         {users.items.data.map((user, index) =>

@@ -1,13 +1,23 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import "@babel/polyfill";
+
+
+
 
 import { history } from '../_helpers';
 import { alertActions } from '../_actions';
-import { PrivateRoute } from '../_components';
+import { PrivateRoute } from '../_components/PrivateRoute/index';
 import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
+import { ToDoPage } from '../ToDoPage';
+import { ToDoEditForm } from '../_containers/ToDoEditForm';
+
+import { NotFound } from '../_components/NotFound';
+import { NavBar } from '../_containers/NavBar';
 
 class App extends React.Component {
     constructor(props) {
@@ -31,9 +41,16 @@ class App extends React.Component {
                         }
                         <Router history={history}>
                             <div>
-                                <PrivateRoute exact path="/" component={HomePage} />
-                                <Route path="/login" component={LoginPage} />
-                                <Route path="/register" component={RegisterPage} />
+                            <NavBar/>
+                                <Switch>
+
+                                    <PrivateRoute exact path="/" component={HomePage} />
+                                    <PrivateRoute exact path={'/todo_items/:itemId'} component={ToDoEditForm}/>
+                                    <Route exact path="/login" component={LoginPage} />
+                                    <Route path="/register" component={RegisterPage} />
+                                    <PrivateRoute exact path="/todo" component={ToDoPage} />
+                                    <Route component={NotFound} />
+                                </Switch>
                             </div>
                         </Router>
                     </div>
@@ -51,4 +68,4 @@ function mapStateToProps(state) {
 }
 
 const connectedApp = connect(mapStateToProps)(App);
-export { connectedApp as App }; 
+export { connectedApp as App };
