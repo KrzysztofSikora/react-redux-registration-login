@@ -1,11 +1,8 @@
-import config from 'config';
 import { authHeader } from '../_helpers';
 import  * as routes from '../_helpers/routes'
 
-import * as api from './../_helpers/api'
-
-
 export const todoService = {
+    getOneToDo,
     getAllToDo,
     createToDo,
     updateToDo,
@@ -13,30 +10,34 @@ export const todoService = {
     deleteAll
 };
 
-
-
+function getOneToDo(id) {
+    return new Promise(
+        (resolve, reject) => apiCallWithHeader(routes.toDoItemsApiUrl(id), 'GET', authHeader(), resolve, reject));
+}
 
 function getAllToDo() {
      return new Promise(
          (resolve, reject) => apiCallWithHeader(routes.toDoItemsApiUrl(), 'GET', authHeader(), resolve, reject));
 }
 
-
 function createToDo(body) {
     return new Promise(
         (resolve, reject) => apiCallWithHeaderAndBody(routes.toDoItemsApiUrl(), 'POST', authHeader(), body, resolve, reject));
 }
 
-function updateToDo() {
-
+function updateToDo(id, body) {
+    return new Promise(
+        (resolve, reject) => apiCallWithHeaderAndBody(routes.toDoItemsApiUrl(id), 'PUT', authHeader(), body, resolve, reject));
 }
 
-function deleteById() {
-
+function deleteById(id) {
+    return new Promise(
+        (resolve, reject) => apiCallWithHeader(routes.toDoItemsApiUrl(id), 'DELETE', authHeader(), resolve, reject));
 }
 
 function deleteAll() {
-
+    return new Promise(
+        (resolve, reject) => apiCallWithHeader(routes.toDoItemsDeleteAllApiUrl(), 'DELETE', authHeader(), resolve, reject));
 }
 
 const apiCallWithHeader = (url, method, header, resolve, reject) =>

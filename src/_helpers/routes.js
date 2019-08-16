@@ -9,3 +9,13 @@ export const toDoItemsCreateApiUrl = () =>
 export const toDoItemsDeleteAllApiUrl = () =>
     `${serverUrl}/todo/delete-all`;
 
+export const userApiUrl = id =>
+    id ? `${serverUrl}/users/${id}` : `${serverUrl}/users`;
+
+export const userRegisterApiUrl = () =>
+    `${serverUrl}/register`;
+
+export const userLoginApiUrl = () =>
+    `${serverUrl}/login`;
+
+

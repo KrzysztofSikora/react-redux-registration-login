@@ -1,5 +1,6 @@
 import config from 'config';
 import {authHeader} from '../_helpers';
+import * as routes from '../_helpers/routes'
 
 export const userService = {
     login,
@@ -18,12 +19,10 @@ function login(username, password) {
         body: JSON.stringify({ username, password })
     };
 
-    return fetch(`${config.apiUrl}/login`, requestOptions)
+    return fetch(routes.userLoginApiUrl(), requestOptions)
         .then(handleResponse)
         .then(response => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-
-            console.log(response.data)
             localStorage.setItem('user', JSON.stringify(response.data));
             // user
             return response.data;
@@ -40,8 +39,7 @@ function getAll() {
         method: 'GET',
         headers: authHeader()
     };
-    console.log("re",requestOptions)
-    return fetch(`${config.apiUrl}/users`, requestOptions).then(handleResponse);
+    return fetch(routes.userApiUrl(), requestOptions).then(handleResponse);
 }
 
 function getById(id) {
@@ -50,7 +48,7 @@ function getById(id) {
         headers: authHeader()
     };
 
-    return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
+    return fetch(routes.userApiUrl(id), requestOptions).then(handleResponse);
 }
 
 function register(user) {
@@ -67,7 +65,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`${config.apiUrl}/register`, requestOptions).then(handleResponse);
+    return fetch(routes.userRegisterApiUrl(), requestOptions).then(handleResponse);
 }
 
 function update(user) {
@@ -77,7 +75,7 @@ function update(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`${config.apiUrl}/users/${user.id}`, requestOptions).then(handleResponse);;
+    return fetch(routes.userApiUrl(user.id), requestOptions).then(handleResponse);;
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -87,7 +85,7 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
+    return fetch(routes.userApiUrl(id), requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import { ToDoItem } from '../../_components/ToDoItem'
-import  {NewToDoForm} from '../../_components/NewToDoForm'
-import styled from 'styled-components'
-import * as toDoItemApi from '../../_helpers/toDoItemApi'
+import { NewToDoForm } from '../../_components/NewToDoForm'
+import { todoService } from "../../_services";
+
 import * as _ from 'ramda'
 import { Header, DestroyButton } from '../../_helpers/theme'
 
@@ -11,7 +11,7 @@ import { Header, DestroyButton } from '../../_helpers/theme'
 class ToDoList extends Component {
 
     componentDidMount = async () =>{
-        let tasks = await toDoItemApi.getAll();
+        let tasks = await todoService.getAllToDo();
         tasks = tasks['data'];
         this.setState({tasks});
     };
@@ -27,7 +27,7 @@ class ToDoList extends Component {
 
     addToDo = async () => {
         const { tasks, draft } = this.state;
-        let task = await toDoItemApi.create({content: draft});
+        let task = await todoService.createToDo({content: draft});
         task = task['data'];
 
         this.setState({tasks: _.append(task, tasks), draft: ''})
@@ -40,7 +40,7 @@ class ToDoList extends Component {
 
     destroyToDo = async (id) => {
         const { tasks } = this.state;
-        await toDoItemApi.destroy(id);
+        await todoService.deleteById(id);
         const { index } = this.findById(id, tasks);
         this.setState({tasks: _.remove(index, 1, tasks)})
 
@@ -49,7 +49,7 @@ class ToDoList extends Component {
     toggleDone = async(id) => {
         const { tasks } = this.state;
         const { index, task } = this.findById(id, tasks);
-        const response = await toDoItemApi.update(id, {done: !task.done });
+        const response = await todoService.updateToDo(id, {done: !task.done });
         this.setState({tasks: _.update(index, response.data, tasks)});
 
     };
@@ -59,7 +59,7 @@ class ToDoList extends Component {
     };
 
     removeAll = async () => {
-        const response = await toDoItemApi.destroyAll();
+        const response = await todoService.deleteAll();
         this.setState({tasks: []});
         console.log("removeAll response", response)
 

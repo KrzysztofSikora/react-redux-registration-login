@@ -7,15 +7,6 @@ import { userService } from "../_services";
 class HomePage extends React.Component {
     componentDidMount = async () => {
 
-
-        var getAllToDo = await todoService.getAllToDo()
-
-        let body = {
-            done: 0,
-            content: "refactor"
-        }
-
-        var createToDo = await todoService.createToDo(body)
     }
 
     handleDeleteUser(id) {

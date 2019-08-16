@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { get } from '../../_helpers/toDoItemApi';
-import { update } from '../../_helpers/toDoItemApi';
+import { todoService } from "../../_services";
+
 import { Formik } from 'formik'
 import {
     SubmitButton,
@@ -19,15 +19,15 @@ class ToDoEditForm extends Component {
         disabled: false
     };
     componentDidMount = async () => {
-        const task = await get(this.itemId());
+        const task = await todoService.getOneToDo(this.itemId());
         this.setState({toDoItem: task.data, fetched: true});
     };
 
     itemId = () => this.props.match.params.itemId;
 
     isSubmitting = async (values) => {
-        await update(values.id, { ...values});
-        this.props.history.push('/')
+        await todoService.updateToDo(values.id, { ...values});
+        this.props.history.push('/todo')
     };
 
     render() {
@@ -48,7 +48,6 @@ class ToDoEditForm extends Component {
                             } else if (values.content.includes('ass')) {
                                 errors.content = 'Mind your language'
                             }
-                            console.log(errors)
                             if(_.isEmpty(errors)) {
                                 this.setState({disabled: false})
                             } else {
