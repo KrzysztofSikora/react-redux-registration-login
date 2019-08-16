@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { Link } from "../../_helpers/theme"
+
+import { Link } from 'react-router-dom'
+import styled from "styled-components";
+
+import { StyledLink } from '../../_helpers/theme'
 
 
 class NavBar extends Component {
@@ -16,9 +20,9 @@ class NavBar extends Component {
         return (
 
             <ul className="nav nav-pills">
-                <li role="presentation" ><a href="/">Home</a></li>
-                <li role="presentation"  ><a href="/todo">ToDo List</a></li>
-                <li role="presentation"  ><a href="/">New Login</a></li>
+                <li role="presentation"><StyledLink to={`/`}>Home</StyledLink></li>
+                <li role="presentation"><StyledLink to={`/todo`}> ToDo List</StyledLink></li>
+                <li role="presentation"><StyledLink to={`/register`}>Registry</StyledLink></li>
             </ul>
         )
     }

@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const ErrorMsg = styled.div`
   color: red;
@@ -76,14 +77,59 @@ export const Menu = styled.div`
     width: 400px;
 `
 
-export const Link = styled.a `
-    text-decoration: none;
-    color: #992299
-    margin-left: 5px;
-`
+// export const Link = styled.a `
+//     text-decoration: none;
+//     color: #992299
+//     margin-left: 5px;
+// `
 
 export const NavA = styled.a `
     text-decoration: none;
     color: #992299
     margin-left: 5px;
+`;
+
+export const StyledLink = styled(Link)`
+  color: palevioletred;
+  text-decoration: none;
+  margin-left: 5px;
+  
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  
+  
+  
+  &:hover {
+    color: #fff;
+  }
+`
+
+export const StyledEditLink = styled(Link)`
+  color: palevioletred;
+  text-decoration: none;
+  margin-left: 5px;
+  &:hover {
+    color: #fff;
+  }
+`
+
+export const Header = styled.h3`
+    color: #fffff;
+
+`;
+
+
+export const DestroyButton = styled.button `
+       border-radius: 10px;
+       background: red;
+       padding: 5px;
+       color: #fff;
+       margin-bottom: 10px;
 `

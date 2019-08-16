@@ -43,12 +43,11 @@ class App extends React.Component {
                             <div>
                             <NavBar/>
                                 <Switch>
-
-                                    <PrivateRoute exact path="/" component={HomePage} />
+                                    <PrivateRoute exact path='/' component={HomePage} />
                                     <PrivateRoute exact path={'/todo_items/:itemId'} component={ToDoEditForm}/>
-                                    <Route exact path="/login" component={LoginPage} />
-                                    <Route path="/register" component={RegisterPage} />
-                                    <PrivateRoute exact path="/todo" component={ToDoPage} />
+                                    <Route exact path={'/login'} component={LoginPage} />
+                                    <Route path={'/register'} component={RegisterPage} />
+                                    <PrivateRoute exact path={"/todo"} component={ToDoPage} />
                                     <Route component={NotFound} />
                                 </Switch>
                             </div>

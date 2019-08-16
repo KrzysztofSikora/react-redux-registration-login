@@ -7,35 +7,6 @@ export const get = url =>
         }
     );
 
-// export const post = url =>
-//      new Promise(
-//          (resolve, reject) => {
-//             fetch(url, {
-//                 method: 'POST',
-//                 body: {}
-//             })
-//                 .then(response => response.json())
-//                 .then(json => resolve(json))
-//         }
-//     );
-//
-// export const put = (url, model) =>
-//     new Promise(
-//         (resolve, reject) => {
-//             fetch(url,
-//                 {
-//                     method: 'PUT',
-//                     body: model
-//                 })
-//
-//                 .then(response => resolve(response))
-//                 // .then(response => response.json())
-//                 // .then(json => resolve(json))
-//         }
-//     );
-
-
-
 const apiCall = (url, method, body, resolve, reject) =>
     fetch(url, {
         method: method,
@@ -51,6 +22,24 @@ const apiCall = (url, method, body, resolve, reject) =>
             }
     });
 
+
+const apiCallWithHeader = (url, method, header, body, resolve, reject) =>
+    fetch(url, {
+        method: method,
+        headers: header,
+        body :JSON.stringify(body)
+    }).then(response => {
+        if(response.ok) {
+            response.json().then(json=> resolve(json))
+        } else {
+            reject(response)
+        }
+    });
+
+export const getAuth = (url, body, header) =>
+    new Promise(
+        (resolve, reject) => apiCall(url, 'GET', body, header, resolve, reject)
+    );
 
 export const put = (url, body) =>
     new Promise(

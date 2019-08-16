@@ -5,27 +5,8 @@ import  {NewToDoForm} from '../../_components/NewToDoForm'
 import styled from 'styled-components'
 import * as toDoItemApi from '../../_helpers/toDoItemApi'
 import * as _ from 'ramda'
+import { Header, DestroyButton } from '../../_helpers/theme'
 
-
-// import {
-//     CurrentTestProvider,
-//     CurrentTestConsumer
-// } from '../../context/CurrentTest.context'
-//
-// import {CurrentUserConsumer, CurrentUserProvider} from "../../context/CurrentUser.context";
-
-const Header = styled.h1`
-    color: #fffff;
-
-`;
-
-const DestroyButton = styled.button `
-       border-radius: 10px;
-       background: red;
-       padding: 5px;
-       color: #fff;
-       margin-bottom: 10px;
-`
 
 class ToDoList extends Component {
 
