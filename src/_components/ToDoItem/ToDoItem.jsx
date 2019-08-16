@@ -5,22 +5,26 @@ import { Link } from 'react-router-dom'
 import { StyledEditLink } from '../../_helpers/theme'
 
 const Item = styled.div`
-    
     background: #343744;
     border-radius: 10px;
     padding: 14px;
+    padding-bottom: 20px;
     margin-bottom: 7px;
     color: ${props => props.done ? '#1fd84d': 'auto'}
     text-decoration: ${props => props.done ? 'line-through' : 'auto'}   
 `;
 const Text = styled.span`
+    word-break: break-all;
     float:left;
     color: ${props => props.done ? '#1fd84d': '#ffffff'}
 `;
 const Button = styled.button`
     float:right; 
 `;
-
+const HrLine = styled.hr`
+    padding: 1px;
+    border-color: palevioletred;
+`
 
 class ToDoItem extends Component {
 
@@ -35,6 +39,8 @@ class ToDoItem extends Component {
         return (
             <Item done={done}>
                 <Text onClick={this.toggleDone} done={done} >{text}</Text>
+                <br/>
+                <HrLine/>
                 <Button className="btn btn-danger"  onClick={this.destroy} >[x]</Button>
                 <StyledEditLink to={`/todo_items/${id}`}>edit</StyledEditLink>
             </Item>

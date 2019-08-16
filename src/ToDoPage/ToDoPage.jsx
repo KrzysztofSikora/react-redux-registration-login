@@ -25,12 +25,8 @@ class ToDoPage extends React.Component {
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h3>Hi {user.name}!</h3>
-                <p>ToDo Paage</p>
+                <p>ToDo Page</p>
                 <ToDoList/>
-
-                <p>
-                    <Link to="/login">Logout</Link>
-                </p>
             </div>
         );
     }

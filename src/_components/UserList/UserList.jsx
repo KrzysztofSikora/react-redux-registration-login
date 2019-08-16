@@ -40,9 +40,6 @@ class UserList extends Component {
                     )}
                 </ul>
                 }
-                <p>
-                    <Link to="/login">Logout</Link>
-                </p>
             </div>
         );
     }
