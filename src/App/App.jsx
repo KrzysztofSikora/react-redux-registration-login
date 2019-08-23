@@ -33,28 +33,28 @@ class App extends React.Component {
     render() {
         const { alert } = this.props;
         return (
-            <div className="jumbotron">
-                <div className="container">
-                    <div className="col-sm-8 col-sm-offset-2">
-                        {alert.message &&
-                            <div className={`alert ${alert.type}`}>{alert.message}</div>
-                        }
-                        <Router history={history}>
+            <Router history={history}>
+                <div>
+                    <NavBar/>
+                    <div className="jumbotron">
+                        <div className="container">
                             <div>
-                            <NavBar/>
-                                <Switch>
-                                    <PrivateRoute exact path='/' component={HomePage} />
-                                    <PrivateRoute exact path={'/todo_items/:itemId'} component={ToDoEditForm}/>
-                                    <Route exact path={'/login'} component={LoginPage} />
-                                    <Route path={'/register'} component={RegisterPage} />
-                                    <PrivateRoute exact path={"/todo"} component={ToDoPage} />
-                                    <Route component={NotFound} />
-                                </Switch>
+                                {alert.message &&
+                                    <div className={`alert ${alert.type}`}>{alert.message}</div>
+                                }
+                                    <Switch>
+                                        <PrivateRoute exact path='/' component={HomePage} />
+                                        <PrivateRoute exact path={'/todo_items/:itemId'} component={ToDoEditForm}/>
+                                        <Route exact path={'/login'} component={LoginPage} />
+                                        <Route path={'/register'} component={RegisterPage} />
+                                        <PrivateRoute exact path={"/todo"} component={ToDoPage} />
+                                        <Route component={NotFound} />
+                                    </Switch>
                             </div>
-                        </Router>
+                        </div>
                     </div>
-                </div>
             </div>
+    </Router>
         );
     }
 }

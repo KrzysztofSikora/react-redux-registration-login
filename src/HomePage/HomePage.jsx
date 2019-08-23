@@ -1,12 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { UserList } from '../_components/UserList'
+import {connect} from 'react-redux';
+import {UserList} from '../_components/UserList'
 import {todoService} from "../_services";
-import { userService } from "../_services";
+import {userService} from "../_services";
 
 class HomePage extends React.Component {
     componentDidMount = async () => {
 
+
+
+
+        console.log("here will be checking")
     }
 
     handleDeleteUser(id) {
@@ -14,15 +18,16 @@ class HomePage extends React.Component {
     }
 
     render() {
-        return (
-            <UserList />
+        return (<div className='row justify-content-md-center'>
+                <UserList/>
+            </div>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { users, authentication } = state;
-    const { user } = authentication;
+    const {users, authentication} = state;
+    const {user} = authentication;
     return {
         user,
         users
@@ -30,4 +35,4 @@ function mapStateToProps(state) {
 }
 
 const connectedHomePage = connect(mapStateToProps)(HomePage);
-export { connectedHomePage as HomePage };
+export {connectedHomePage as HomePage};

@@ -20,7 +20,8 @@ class UserList extends Component {
         const { users, user} = this.props;
 
         return (
-            <div className="col-md-6 col-md-offset-3">
+
+            <div className="col-md-6">
                 <h3>Hi {user.name}!</h3>
                 <p>You're logged in with React!! homePage</p>
                 <h3>All registered users:</h3>

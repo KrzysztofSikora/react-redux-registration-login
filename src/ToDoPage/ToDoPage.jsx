@@ -23,10 +23,12 @@ class ToDoPage extends React.Component {
         const { user } = this.props;
         console.log("t",this.props)
         return (
-            <div className="col-md-6 col-md-offset-3">
-                <h3>Hi {user.name}!</h3>
-                <p>ToDo Page</p>
-                <ToDoList/>
+            <div className="row justify-content-md-center">
+                <div className="col-md-6">
+                    <h3>Hi {user.name}!</h3>
+                    <p>ToDo Page</p>
+                    <ToDoList/>
+                </div>
             </div>
         );
     }
