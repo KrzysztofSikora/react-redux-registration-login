@@ -1,13 +1,23 @@
 import React from 'react';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import "@babel/polyfill";
+
+
+
 
 import { history } from '../_helpers';
 import { alertActions } from '../_actions';
-import { PrivateRoute } from '../_components';
+import { PrivateRoute } from '../_components/PrivateRoute/index';
 import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
+import { ToDoPage } from '../ToDoPage';
+import { ToDoEditForm } from '../_containers/ToDoEditForm';
+
+import { NotFound } from '../_components/NotFound';
+import { NavBar } from '../_containers/NavBar';
 
 class App extends React.Component {
     constructor(props) {
@@ -23,22 +33,28 @@ class App extends React.Component {
     render() {
         const { alert } = this.props;
         return (
-            <div className="jumbotron">
-                <div className="container">
-                    <div className="col-sm-8 col-sm-offset-2">
-                        {alert.message &&
-                            <div className={`alert ${alert.type}`}>{alert.message}</div>
-                        }
-                        <Router history={history}>
+            <Router history={history}>
+                <div>
+                    <NavBar/>
+                    <div className="jumbotron">
+                        <div className="container">
                             <div>
-                                <PrivateRoute exact path="/" component={HomePage} />
-                                <Route path="/login" component={LoginPage} />
-                                <Route path="/register" component={RegisterPage} />
+                                {alert.message &&
+                                    <div className={`alert ${alert.type}`}>{alert.message}</div>
+                                }
+                                    <Switch>
+                                        <PrivateRoute exact path='/' component={HomePage} />
+                                        <PrivateRoute exact path={'/todo_items/:itemId'} component={ToDoEditForm}/>
+                                        <Route exact path={'/login'} component={LoginPage} />
+                                        <Route path={'/register'} component={RegisterPage} />
+                                        <PrivateRoute exact path={"/todo"} component={ToDoPage} />
+                                        <Route component={NotFound} />
+                                    </Switch>
                             </div>
-                        </Router>
+                        </div>
                     </div>
-                </div>
             </div>
+    </Router>
         );
     }
 }
@@ -51,4 +67,4 @@ function mapStateToProps(state) {
 }
 
 const connectedApp = connect(mapStateToProps)(App);
-export { connectedApp as App }; 
+export { connectedApp as App };
