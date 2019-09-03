@@ -3,20 +3,9 @@ import {connect} from 'react-redux';
 import {UserList} from '../_components/UserList'
 import {todoService} from "../_services";
 import {userService} from "../_services";
-
+import { todoActions } from "../_actions";
+import { store } from "../_helpers"
 class HomePage extends React.Component {
-    componentDidMount = async () => {
-
-
-
-
-        console.log("here will be checking")
-    }
-
-    handleDeleteUser(id) {
-
-    }
-
     render() {
         return (<div className='row justify-content-md-center'>
                 <UserList/>
@@ -31,6 +20,7 @@ function mapStateToProps(state) {
     return {
         user,
         users
+
     };
 }
 

@@ -61,9 +61,6 @@ class ToDoList extends Component {
     removeAll = async () => {
         const response = await todoService.deleteAll();
         this.setState({tasks: []});
-        console.log("removeAll response", response)
-
-
     };
 
     render() {
