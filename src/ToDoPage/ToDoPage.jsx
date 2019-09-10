@@ -1,18 +1,13 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userActions } from '../_actions';
+import {getAllToDos, userActions} from '../_actions';
 import { todoActions } from '../_actions';
 import { ToDoList } from '../_containers/ToDoList'
+import { store } from "../_helpers"
 
 
 class ToDoPage extends React.Component {
-    componentDidMount() {
-        // this.props.dispatch(userActions.getAll());
-        this.props.dispatch(todoActions.getAll());
-
-    }
-
     handleDeleteUser(id) {
         return (e) => this.props.dispatch(userActions.delete(id));
     }

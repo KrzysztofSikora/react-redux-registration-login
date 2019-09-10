@@ -15,11 +15,12 @@ class HomePage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const {users, authentication} = state;
+    const {users, authentication, todo} = state;
     const {user} = authentication;
     return {
         user,
-        users
+        users,
+        todo
 
     };
 }

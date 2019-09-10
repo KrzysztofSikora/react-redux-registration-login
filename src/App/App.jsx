@@ -1,12 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import "@babel/polyfill";
-
-
-
-
 import { history } from '../_helpers';
 import { alertActions } from '../_actions';
 import { PrivateRoute } from '../_components/PrivateRoute/index';
@@ -14,8 +9,7 @@ import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
 import { ToDoPage } from '../ToDoPage';
-import { ToDoEditForm } from '../_containers/ToDoEditForm';
-
+import { ToDoEditForm} from "../_containers/ToDoEditForm/ToDoEditForm";
 import { NotFound } from '../_components/NotFound';
 import { NavBar } from '../_containers/NavBar';
 
@@ -26,8 +20,7 @@ class App extends React.Component {
         const { dispatch } = this.props;
         history.listen((location, action) => {
             // clear alert on location change
-
-              dispatch(alertActions.clear());
+            dispatch(alertActions.clear());
         });
     }
 

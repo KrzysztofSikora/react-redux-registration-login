@@ -48,8 +48,8 @@ const apiCallWithHeader = (url, method, header, resolve, reject) =>
         if(response.ok) {
             response.json().then(json=> resolve(json))
         } else {
-
             localStorage.removeItem('user');
+            reject(response)
         }
     });
 

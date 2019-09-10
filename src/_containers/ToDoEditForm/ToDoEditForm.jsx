@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { todoService } from "../../_services";
+import { getOneToDos, updateToDo } from "../../_actions";
+import { connect } from 'react-redux';
 
 import { Formik } from 'formik'
 import {
@@ -19,23 +21,23 @@ class ToDoEditForm extends Component {
         disabled: false
     };
     componentDidMount = async () => {
-        const task = await todoService.getOneToDo(this.itemId());
-        this.setState({toDoItem: task.data, fetched: true});
+         await this.props.dispatch(getOneToDos(this.itemId()));
+         this.setState({ fetched: true});
     };
 
     itemId = () => this.props.match.params.itemId;
 
     isSubmitting = async (values) => {
-        await todoService.updateToDo(values.id, { ...values});
+        this.props.dispatch(updateToDo(values.id, ...values))
         this.props.history.push('/todo')
     };
 
     render() {
         return (
             <div>Edit form {this.itemId()}
-                {this.state.fetched
+                {this.props.todo.item
                     ? <Formik
-                        initialValues={{...this.state.toDoItem}}
+                        initialValues={{...this.props.todo.item}}
                         onSubmit={(values) => this.isSubmitting(values) }
                         validate = {(values) => {
 
@@ -102,5 +104,10 @@ class ToDoEditForm extends Component {
         )
     }
 }
+function mapStateToProps(state) {
+    const  { todo } = state;
+    return { todo };
+}
 
-export default ToDoEditForm
+const connectedToDoEditForm = connect(mapStateToProps)(ToDoEditForm);
+export { connectedToDoEditForm as ToDoEditForm };
