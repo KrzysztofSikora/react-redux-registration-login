@@ -1,50 +1,92 @@
-import { userConstants } from '../_constants';
-//@todo make it as reducer todo
-export function users(state = {}, action) {
+import { todoConstants } from '../_constants';
+export function todo(state = {}, action) {
     switch (action.type) {
-        case userConstants.GETALL_REQUEST:
+        case todoConstants.GET_ONE_SUCCESS:
+            return {
+                ...state,
+                item: action.response
+            };
+
+        case todoConstants.GET_ONE_FAILURE:
+            return {
+                ...state,
+                error: action.error
+            };
+        case todoConstants.GETALL_REQUEST:
             return {
                 loading: true
             };
-        case userConstants.GETALL_SUCCESS:
+        case todoConstants.GETALL_SUCCESS:
             return {
-                items: action.users
+                ...state,
+                items: action.response
             };
-        case userConstants.GETALL_FAILURE:
+        case todoConstants.GETALL_FAILURE:
             return {
                 error: action.error
             };
-        case userConstants.DELETE_REQUEST:
-            // add 'deleting:true' property to user being deleted
-            return {
-                ...state,
-                items: state.items.map(user =>
-                    user.id === action.id
-                        ? { ...user, deleting: true }
-                        : user
-                )
-            };
-        case userConstants.DELETE_SUCCESS:
-            // remove deleted user from state
-            return {
-                items: state.items.filter(user => user.id !== action.id)
-            };
-        case userConstants.DELETE_FAILURE:
-            // remove 'deleting:true' property and add 'deleteError:[error]' property to user
-            return {
-                ...state,
-                items: state.items.map(user => {
-                    if (user.id === action.id) {
-                        // make copy of user without 'deleting:true' property
-                        const { deleting, ...userCopy } = user;
-                        // return copy of user with 'deleteError:[error]' property
-                        return { ...userCopy, deleteError: action.error };
-                    }
 
-                    return user;
-                })
+        case todoConstants.CREATE_SUCCESS:
+            return {
+                ...state,
+                items: [...state.items, action.response]
+            };
+        case todoConstants.CREATE_FAILURE:
+            return {
+                ...state,
+                error: action.error
+            };
+
+        case todoConstants.UPDATE_SUCCESS:
+            return {
+                ...state,
+                items: doneUpdate(state, action.response)
+            };
+        case todoConstants.UPDATE_FAILURE:
+            return {
+                ...state,
+                error: action.error
+            };
+
+        case todoConstants.DELETE_SUCCESS:
+            return {
+                ...state,
+                items: state.items.filter(item => item.id !== action.id)
+
+            };
+            // todo add redirection
+        case todoConstants.DELETE_FAILURE:
+            return {
+                ...state,
+                error: action.error
+            };
+
+        case todoConstants.DELETE_ALL_SUCCESS:
+            return {
+                ...state,
+                items: []
+
+            };
+        case todoConstants.DELETE_ALL_FAILURE:
+            return {
+                ...state,
+                error: action.error
             };
         default:
             return state
     }
 }
+
+
+const doneUpdate = function (state, response) {
+    let arr = [];
+    state.items.forEach(function (k) {
+        if(k.id === response.id) {
+            k = response;
+            arr.push(k)
+        } else {
+            arr.push(k)
+        }
+    });
+    return arr;
+};

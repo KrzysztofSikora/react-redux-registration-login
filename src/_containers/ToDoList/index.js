@@ -1,1 +1,1 @@
-export ToDoList from './ToDoList';
+export * from './ToDoList';

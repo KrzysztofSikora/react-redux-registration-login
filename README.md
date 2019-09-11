@@ -1,5 +1,9 @@
-# react-redux-registration-login-example
+# React and Redux Todo List Project
 
-React + Redux - User Registration and Login Tutorial & Example
 
-For documentation and further details go to http://jasonwatmore.com/post/2017/09/16/react-redux-user-registration-and-login-tutorial-example
+Login and registration based on:
+
+http://jasonwatmore.com/post/2017/09/16/react-redux-user-registration-and-login-tutorial-example
+
+http://krzysztofsikora.pl has added todo list with reducer.
+

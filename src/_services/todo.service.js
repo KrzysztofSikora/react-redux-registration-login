@@ -1,5 +1,6 @@
 import { authHeader } from '../_helpers';
 import  * as routes from '../_helpers/routes'
+import {alertActions} from "../_actions";
 
 export const todoService = {
     getOneToDo,
@@ -14,7 +15,6 @@ function getOneToDo(id) {
     return new Promise(
         (resolve, reject) => apiCallWithHeader(routes.toDoItemsApiUrl(id), 'GET', authHeader(), resolve, reject));
 }
-
 function getAllToDo() {
      return new Promise(
          (resolve, reject) => apiCallWithHeader(routes.toDoItemsApiUrl(), 'GET', authHeader(), resolve, reject));
@@ -48,6 +48,7 @@ const apiCallWithHeader = (url, method, header, resolve, reject) =>
         if(response.ok) {
             response.json().then(json=> resolve(json))
         } else {
+            localStorage.removeItem('user');
             reject(response)
         }
     });
