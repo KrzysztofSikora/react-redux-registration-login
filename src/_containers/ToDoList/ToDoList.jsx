@@ -39,7 +39,7 @@ class ToDoList extends Component {
 
     toggleDone = async(id) => {
         let { todo } = this.findById(id, this.props.todo.items);
-        this.props.dispatch(updateToDo(id,{done: !todo.done }))
+        this.props.dispatch(updateToDo(id,{done: Number(!todo.done) }))
     };
 
     updateDraft = event => {

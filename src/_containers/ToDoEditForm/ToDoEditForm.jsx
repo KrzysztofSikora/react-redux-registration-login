@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { todoService } from "../../_services";
 import { getOneToDos, updateToDo } from "../../_actions";
 import { connect } from 'react-redux';
 
@@ -28,7 +27,8 @@ class ToDoEditForm extends Component {
     itemId = () => this.props.match.params.itemId;
 
     isSubmitting = async (values) => {
-        this.props.dispatch(updateToDo(values.id, ...values))
+        values.done = Number(values.done);
+        this.props.dispatch(updateToDo(values.id, values))
         this.props.history.push('/todo')
     };
 

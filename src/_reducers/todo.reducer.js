@@ -1,9 +1,9 @@
 import { todoConstants } from '../_constants';
-//@todo make it as reducer todo
 export function todo(state = {}, action) {
     switch (action.type) {
         case todoConstants.GET_ONE_SUCCESS:
             return {
+                ...state,
                 item: action.response
             };
 
@@ -18,11 +18,8 @@ export function todo(state = {}, action) {
             };
         case todoConstants.GETALL_SUCCESS:
             return {
+                ...state,
                 items: action.response
-            };
-        case todoConstants.GETALL_TEST:
-            return {
-                items: action.item
             };
         case todoConstants.GETALL_FAILURE:
             return {
@@ -34,7 +31,6 @@ export function todo(state = {}, action) {
                 ...state,
                 items: [...state.items, action.response]
             };
-
         case todoConstants.CREATE_FAILURE:
             return {
                 ...state,
@@ -44,7 +40,7 @@ export function todo(state = {}, action) {
         case todoConstants.UPDATE_SUCCESS:
             return {
                 ...state,
-                items: doneUpdate(state, action.id)
+                items: doneUpdate(state, action.response)
             };
         case todoConstants.UPDATE_FAILURE:
             return {
@@ -82,11 +78,11 @@ export function todo(state = {}, action) {
 }
 
 
-const doneUpdate = function (state, id) {
+const doneUpdate = function (state, response) {
     let arr = [];
     state.items.forEach(function (k) {
-        if(k.id === id) {
-            k.done = !k.done;
+        if(k.id === response.id) {
+            k = response;
             arr.push(k)
         } else {
             arr.push(k)

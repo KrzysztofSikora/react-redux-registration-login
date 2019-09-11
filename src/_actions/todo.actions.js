@@ -52,8 +52,11 @@ export const createToDo = (body) =>
 export const updateToDo = (id, body) =>
     async (dispatch) => {
         try {
-            await todoService.updateToDo(id,body);
-            dispatch({type: todoConstants.UPDATE_SUCCESS, id})
+            let response  = await todoService.updateToDo(id,body);
+            console.log("dispach", body)
+            console.log("response", response.data)
+            response = response.data;
+            dispatch({type: todoConstants.UPDATE_SUCCESS, response})
         } catch (e) {
             dispatch({type: todoConstants.UPDATE_FAILURE, error: e.statusText})
         }
