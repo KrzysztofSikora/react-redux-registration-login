@@ -47,7 +47,7 @@ class LocationToDo extends Component {
             <div style={{height: '100vh', width: '100%'}}>
                 <div onClick={this.dispatcher}>Kliknij tu</div>
                 <GoogleMapReact
-                    bootstrapURLKeys={{key: 'AIzaSyD5MVCo_7GHBNforib8cPTb3tRgvOsl7k0'}}
+                    bootstrapURLKeys={{key: ''}}
                     defaultCenter={this.currentPosition}
                     defaultZoom={this.props.zoom}
                     onGoogleApiLoaded={({map, maps}) => this.apiIsLoaded(map, maps, this.props)}
