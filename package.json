@@ -12,6 +12,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "formik": "^1.5.8",
+    "google-map-react": "^1.1.4",
     "history": "^4.6.3",
     "prop-types": "^15.7.2",
     "ramda": "^0.26.1",

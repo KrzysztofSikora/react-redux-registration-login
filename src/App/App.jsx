@@ -8,6 +8,7 @@ import { PrivateRoute } from '../_components/PrivateRoute/index';
 import { HomePage } from '../HomePage';
 import { LoginPage } from '../LoginPage';
 import { RegisterPage } from '../RegisterPage';
+import { FeaturePage } from '../FeaturePage';
 import { ToDoPage } from '../ToDoPage';
 import { ToDoEditForm} from "../_containers/ToDoEditForm/ToDoEditForm";
 import { NotFound } from '../_components/NotFound';
@@ -41,6 +42,7 @@ class App extends React.Component {
                                         <Route exact path={'/login'} component={LoginPage} />
                                         <Route path={'/register'} component={RegisterPage} />
                                         <PrivateRoute exact path={"/todo"} component={ToDoPage} />
+                                        <PrivateRoute exact path={"/feature"} component={FeaturePage} />
                                         <Route component={NotFound} />
                                     </Switch>
                             </div>

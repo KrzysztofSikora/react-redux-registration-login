@@ -42,6 +42,15 @@ export function todo(state = {}, action) {
                 ...state,
                 items: doneUpdate(state, action.response)
             };
+
+
+        case todoConstants.UPDATE_LOCATION:
+
+
+            return {
+               ...state,
+                item: updateLocation(state.item, action)
+            };
         case todoConstants.UPDATE_FAILURE:
             return {
                 ...state,
@@ -90,3 +99,9 @@ const doneUpdate = function (state, response) {
     });
     return arr;
 };
+
+const updateLocation = function (state, action) {
+    state.lat = action.location.lat;
+    state.lng = action.location.lng;
+    return state;
+}

@@ -11,6 +11,7 @@ class NavBar extends Component {
                 <ul className="nav nav-pills">
                     <li role="presentation"><Link className='btn btn-default' to={`/`}>Home</Link></li>
                     <li role="presentation"><Link className='btn btn-default' to={`/todo`}> ToDo List</Link></li>
+                    <li role="presentation"><Link className='btn btn-default' to={`/feature`}>Feature</Link></li>
                     <li role="presentation"><Link className='btn btn-default' to={`/register`}>Registry</Link></li>
                     <li role="presentation"><Link className='btn btn-default' to={`/login`}>Logout</Link></li>
                 </ul>
