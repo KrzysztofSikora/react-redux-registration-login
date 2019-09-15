@@ -3,10 +3,7 @@ import { connect } from 'react-redux';
 import {getAllToDos, userActions} from '../_actions';
 import { todoActions } from '../_actions';
 import { ToDoList } from '../_containers/ToDoList'
-
-import Feature from '../_components/Feature/Feature'
-import  {LocationToDo}  from '../_components/LocationToDo/LocationToDo'
-
+import  { LocationAllToDo }  from '../_components/LocationAllToDo/LocationAllToDo'
 
 
 class FeaturePage extends React.Component {
@@ -25,7 +22,7 @@ class FeaturePage extends React.Component {
                 </div>
                 <div className="col-md-6">
                     <p>Map col</p>
-                    {/*<LocationToDo feature={'testprops'}/>*/}
+                    <LocationAllToDo />
                 </div>
             </div>
         );

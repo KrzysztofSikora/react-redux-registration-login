@@ -4,33 +4,62 @@ import {connect} from 'react-redux';
 import {todoConstants} from "../../_constants";
 
 
-class LocationToDo extends Component {
+class LocationAllToDo extends Component {
 
     currentPosition = {
-        lat: this.props.todo.item.lat ? this.props.todo.item.lat : 59.955413,
-        lng: this.props.todo.item.lng ? this.props.todo.item.lng : 30.337844
+        lat: 59.955413,
+        lng: 30.337844
     };
 
     static defaultProps = {
         zoom: 11
     };
+    map = null;
+    maps = null;
+    markers = [];
 
-    apiIsLoaded = (map, maps) => {
-        var self = this;
+    componentDidUpdate = (prevProps, prevState) => {
+        function isEmpty(obj) {
+            for(var key in obj) {
+                if(obj.hasOwnProperty(key))
+                    return false;
+            }
+            return true;
+        }
+        if(!isEmpty(prevProps.todo)) {
+            var self = this;
+            this.markers.forEach(function (k,v) {
+                k.setMap(null)
+            });
+            self.props.todo.items.forEach(function (v,k) {
+                self.markers.push(self.addMarker(v.lat, v.lng, self.map, self.maps));
+            });
+        }
+    };
+
+
+
+    apiIsLoaded = async (map, maps) => {
+       this.map = map;
+       this.maps = maps;
+       var self = this;
+       self.props.todo.items.forEach(function (v,k) {
+           self.markers.push(self.addMarker(v.lat, v.lng, map, maps));
+       });
+
+
+    };
+
+
+
+    addMarker = (lat, lng, map, maps) => {
         var marker = new maps.Marker({
             map: map,
-            draggable: true,
             animation: maps.Animation.DROP,
-            position: {lat: this.currentPosition.lat , lng: this.currentPosition.lng}
+            position: {lat: Number(lat) , lng: Number(lng)}
         });
+
         marker.addListener('click', toggleBounce);
-        maps.event.addListener(marker, "dragend", function (event) {
-            let location = {
-                'lat': event.latLng.lat(),
-                'lng': event.latLng.lng()
-            };
-            self.props.dispatch({type: todoConstants.UPDATE_LOCATION, location})
-        });
         function toggleBounce() {
             if (marker.getAnimation() !== null) {
                 marker.setAnimation(null);
@@ -38,8 +67,8 @@ class LocationToDo extends Component {
                 marker.setAnimation(maps.Animation.BOUNCE);
             }
         }
-    };
-
+        return marker;
+    }
 
     render() {
         return (
@@ -65,8 +94,8 @@ function mapStateToProps(state) {
     return {todo};
 }
 
-const connectedLocationToDo = connect(mapStateToProps)(LocationToDo);
-export {connectedLocationToDo as LocationToDo};
+const connectedLocationAllToDo = connect(mapStateToProps)(LocationAllToDo);
+export {connectedLocationAllToDo as LocationAllToDo};
 
 
 // export default LocationToDo;

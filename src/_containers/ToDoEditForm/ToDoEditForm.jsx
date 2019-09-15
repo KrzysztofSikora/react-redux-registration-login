@@ -29,6 +29,7 @@ class ToDoEditForm extends Component {
     componentDidMount = async () => {
          await this.props.dispatch(getOneToDos(this.itemId()));
          this.setState({ fetched: true});
+         console.log("this",this.props)
     };
 
     itemId = () => this.props.match.params.itemId;
@@ -40,7 +41,7 @@ class ToDoEditForm extends Component {
         values.lat = this.props.todo.item.lat
         console.log("update",this.props.todo.item)
         this.props.dispatch(updateToDo(values.id, values))
-        this.props.history.push('/todo')
+        this.props.history.push('/feature')
     };
 
     render() {

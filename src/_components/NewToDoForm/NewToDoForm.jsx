@@ -1,8 +1,5 @@
 import React from "react";
-
 import { Button, TextInput, Container} from "../../_helpers/theme";
-
-
 
 const NewToDoForm = ({onChange, draft, onSubmit}) => (
     <Container>

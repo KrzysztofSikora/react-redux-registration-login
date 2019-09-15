@@ -29,7 +29,7 @@ class ToDoList extends Component {
 
     addToDo = async () => {
         const { draft } = this.state;
-        await this.props.dispatch(createToDo( {content: draft} ));
+        await this.props.dispatch(createToDo( {content: draft, lat: 59.955413, lng: 30.337844} ));
         this.setState({draft: ''});
     };
 
