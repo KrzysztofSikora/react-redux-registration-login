@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d409fd6f-fa8e-44f3-8711-8e25262bd0e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/css/sb-admin-2.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/js/sb-admin-2.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/vendor/bootstrap/js/bootstrap.bundle.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/vendor/bootstrap/js/bootstrap.bundle.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/vendor/bootstrap/js/bootstrap.min.js" afterDir="false" />
@@ -52,6 +50,7 @@
       <change afterPath="$PROJECT_DIR$/src/vendor/bootstrap/scss/utilities/_sizing.scss" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/vendor/bootstrap/scss/utilities/_text.scss" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/vendor/bootstrap/scss/utilities/_visibility.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vendor/css/sb-admin-2.min.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/vendor/datatables/dataTables.bootstrap4.min.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/vendor/datatables/dataTables.bootstrap4.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/vendor/fontawesome-free/css/fontawesome.css" afterDir="false" />
@@ -81,6 +80,7 @@
       <change afterPath="$PROJECT_DIR$/src/vendor/jquery/jquery.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/vendor/jquery/jquery.slim.min.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/vendor/jquery/jquery.slim.min.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vendor/js/sb-admin-2.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LoginPage/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginPage/LoginPage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/_containers/NavBar/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/_containers/NavBar/NavBar.jsx" afterDir="false" />
@@ -177,11 +177,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App/App.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="61" column="37" lean-forward="true" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
+            <state relative-caret-position="213">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -189,11 +189,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/_containers/NavBar/NavBar.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+            <state relative-caret-position="6">
+              <caret line="23" column="49" lean-forward="true" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -201,8 +201,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="32" column="14" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="32" selection-end-column="14" />
+            <state relative-caret-position="615">
+              <caret line="41" column="68" selection-start-line="41" selection-start-column="68" selection-end-line="41" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -402,13 +402,13 @@
               <item name="react-redux-registration-login" type="b2602c69:ProjectViewProjectNode" />
               <item name="react-redux-registration-login" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="App" type="462c0819:PsiDirectoryNode" />
+              <item name="LoginPage" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="react-redux-registration-login" type="b2602c69:ProjectViewProjectNode" />
               <item name="react-redux-registration-login" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="LoginPage" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -434,6 +434,7 @@
       <recent name="$PROJECT_DIR$/src/_constants" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/vendor" />
       <recent name="$PROJECT_DIR$/src/_components/PrivateRoute" />
     </key>
   </component>
@@ -512,18 +513,17 @@
       <workItem from="1568386966987" duration="6475000" />
       <workItem from="1568484414849" duration="9417000" />
       <workItem from="1568494043693" duration="40000" />
-      <workItem from="1568539051788" duration="6227000" />
+      <workItem from="1568539051788" duration="6487000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178702000" />
+    <option name="totallyTimeSpent" value="178962000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1597" y="-1" width="1286" height="1028" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20178282" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20178282" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -538,7 +538,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5019305" side_tool="true" weight="0.256" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4980695" visible="true" weight="0.34111112" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.4980695" visible="true" weight="0.9222222" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
       <window_info anchor="bottom" id="Thumbnails" order="14" weight="0.6048064" />
@@ -854,10 +854,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/sb-admin-2.css">
+    <entry file="file://$PROJECT_DIR$/src/vendor/css/sb-admin-2.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/demo/chart-bar-demo.js">
+    <entry file="file://$PROJECT_DIR$/src/vendor/js/demo/chart-bar-demo.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.jsx">
@@ -888,20 +888,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/_containers/NavBar/NavBar.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="29" column="27" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="32" column="14" lean-forward="true" selection-start-line="25" selection-start-column="8" selection-end-line="32" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Pulpit/startbootstrap-sb-admin-2-gh-pages (2)/blank.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -922,11 +908,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/App/App.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="61" column="37" lean-forward="true" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
+        <state relative-caret-position="213">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="68" selection-start-line="41" selection-start-column="68" selection-end-line="41" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/_containers/NavBar/NavBar.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="23" column="49" lean-forward="true" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
         </state>
       </provider>
     </entry>
