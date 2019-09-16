@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { getOneToDos, updateToDo } from "../../_actions";
 import { connect } from 'react-redux';
 
+import { LocationToDo } from '../../_components/LocationToDo/LocationToDo'
+
+
+
 import { Formik } from 'formik'
 import {
     SubmitButton,
@@ -11,6 +15,9 @@ import {
     ErrorMsg
 } from '../../_helpers/theme'
 import * as _ from 'ramda';
+
+
+
 
 class ToDoEditForm extends Component {
 
@@ -22,27 +29,34 @@ class ToDoEditForm extends Component {
     componentDidMount = async () => {
          await this.props.dispatch(getOneToDos(this.itemId()));
          this.setState({ fetched: true});
+         console.log("this",this.props)
     };
 
     itemId = () => this.props.match.params.itemId;
 
     isSubmitting = async (values) => {
         values.done = Number(values.done);
+
+        values.lng = this.props.todo.item.lng
+        values.lat = this.props.todo.item.lat
+        console.log("update",this.props.todo.item)
         this.props.dispatch(updateToDo(values.id, values))
-        this.props.history.push('/todo')
+        this.props.history.push('/feature')
     };
 
     render() {
         return (
             <div>Edit form {this.itemId()}
+                {/*{console.log("here item",this.props.todo.item)}*/}
+                {/*{console.log("here items",this.props.todo.items)}*/}
+
                 {this.props.todo.item
                     ? <Formik
+                        enableReinitialize
                         initialValues={{...this.props.todo.item}}
                         onSubmit={(values) => this.isSubmitting(values) }
                         validate = {(values) => {
-
                             let errors = {};
-
                             if(!values.content) {
                                 errors.content = 'Required'
                             } else if (values.content.length < 3) {
@@ -68,6 +82,10 @@ class ToDoEditForm extends Component {
 
                                  }) => (
                             <form onSubmit={handleSubmit}>
+
+
+
+                                <LocationToDo/>
                                 <Label>
                                     <ErrorMsg>{errors.content}</ErrorMsg>
                                     <TextInput

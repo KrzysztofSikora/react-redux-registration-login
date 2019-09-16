@@ -52,8 +52,8 @@ export const createToDo = (body) =>
 export const updateToDo = (id, body) =>
     async (dispatch) => {
         try {
+            console.log(body)
             let response  = await todoService.updateToDo(id,body);
-            console.log("dispach", body)
             console.log("response", response.data)
             response = response.data;
             dispatch({type: todoConstants.UPDATE_SUCCESS, response})
