@@ -97,7 +97,7 @@ function handleResponse(response) {
                 location.reload(true);
             }
 
-         gi   const error = (data && data.message) || response.statusText;
+            const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }
 
