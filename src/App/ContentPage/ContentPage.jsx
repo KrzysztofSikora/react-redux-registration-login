@@ -1,11 +1,11 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {UserList} from '../HomePage/UserList'
 import {todoService} from "../_services";
 import {userService} from "../_services";
 import { todoActions } from "../_actions";
 import { store } from "../_helpers"
-import { ContentsList } from "./_containers/ContentsList";
+import { ContentsList } from "./ContentsList";
 class ContentPage extends React.Component {
     render() {
         const { user } = this.props;
@@ -15,7 +15,7 @@ class ContentPage extends React.Component {
                 <div className="col-md-6">
                     <h3>Hi {user.name}!</h3>
                     <p>Content Page</p>
-                    <ContentsList/>adasdsa
+                    <ContentsList/>
                 </div>
             </div>
         );

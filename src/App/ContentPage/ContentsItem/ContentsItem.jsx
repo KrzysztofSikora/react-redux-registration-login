@@ -2,7 +2,7 @@ import React from 'react';
 import {Component} from "react";
 import styled from "styled-components";
 import { Link } from 'react-router-dom'
-import { StyledEditLink } from '../../../_helpers/theme'
+import { StyledEditLink } from '../../_helpers/theme'
 
 const Item = styled.div`
     background: #343744;
@@ -35,10 +35,12 @@ class ContentsItem extends Component {
     destroy = () => this.props.destroy(this.props.id);
 
     render() {
-        const { id, done, text } = this.props;
+
+        const { id, done, content } = this.props;
         return (
+
             <Item done={done}>
-                <Text onClick={this.toggleDone} done={done} >{text}</Text>
+                <Text onClick={this.toggleDone} done={done} >{content}</Text>
                 <br/>
                 <HrLine/>
                 <Button className="btn btn-danger"  onClick={this.destroy} >[x]</Button>

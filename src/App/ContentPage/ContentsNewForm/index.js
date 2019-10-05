@@ -1,1 +1,1 @@
-export NewContentsForm from './NewContentsForm';
+export ContentsNewForm from './ContentsNewForm';

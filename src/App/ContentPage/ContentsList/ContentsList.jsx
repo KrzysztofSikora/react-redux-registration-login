@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { ContentsItem } from '../../_components/ContentsItem'
-import { NewContentsForm } from '../../_components/NewContentsForm'
+import { ContentsItem } from '../ContentsItem'
+import { ContentsNewForm } from '../ContentsNewForm'
 import * as _ from 'ramda'
-import { Header, DestroyButton } from '../../../_helpers/theme'
-import { getAllContents, removeContents, createContents, updateContents, removeAll } from '../../../_actions';
+import { Header, DestroyButton } from '../../_helpers/theme'
+import { getAllContents, removeContents, createContents, updateContents, removeAll } from '../../_actions';
 import { connect } from 'react-redux';
 
 
@@ -11,7 +11,6 @@ class ContentsList extends Component {
 
     componentDidMount = async () => {
         this.props.dispatch(getAllContents());
-        console.log("props", this.props)
 
     };
 
@@ -56,24 +55,22 @@ class ContentsList extends Component {
 
         const { contents } = this.props
         const { draft } = this.state;
-        { console.log("test", contents)}
 
         return (
             <div>
                 {/*{<Header>{todo}</Header>}*/}
                 <DestroyButton onClick={this.removeAll}> Remove all </DestroyButton>
-                { console.log("test", contents)}
                 {contents.items && contents.items.map(contents =>
                     <ContentsItem
                         id={contents.id}
                         key={contents.id}
                         name={contents.name}
-                        text={contents.content}
+                        content={contents.content}
                         done={contents.done}
                         destroy={this.destroyToDo}
                         toggleDone={this.toggleDone}
                     />)}
-                <NewContentsForm
+                <ContentsNewForm
                     onSubmit={this.addToDo}
                     onChange={this.updateDraft}
                     draft={draft}

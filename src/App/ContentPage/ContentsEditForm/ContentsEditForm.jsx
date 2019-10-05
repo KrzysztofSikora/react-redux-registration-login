@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getOneContents, updateContents } from "../../../_actions";
+import { getOneContents, updateContents } from "../../_actions";
 import { connect } from 'react-redux';
 
 import { Formik } from 'formik'
@@ -9,7 +9,7 @@ import {
     Label,
     Select,
     ErrorMsg
-} from '../../../_helpers/theme'
+} from '../../_helpers/theme'
 import * as _ from 'ramda';
 
 class ContentsEditForm extends Component {
@@ -27,7 +27,6 @@ class ContentsEditForm extends Component {
     itemId = () => this.props.match.params.itemId;
 
     isSubmitting = async (values) => {
-        console.log("test",values)
         values.done = Number(values.done);
         this.props.dispatch(updateContents(values.id, values))
         this.props.history.push('/content')
@@ -38,6 +37,7 @@ class ContentsEditForm extends Component {
             <div>Edit form {this.itemId()}
                 {this.props.contents.item
                     ? <Formik
+                        enableReinitialize
                         initialValues={{...this.props.contents.item}}
                         onSubmit={(values) => this.isSubmitting(values) }
                         validate = {(values) => {
@@ -83,7 +83,7 @@ class ContentsEditForm extends Component {
 
                                 <Label>
                                     Priority
-                                    <Select name="priority" onChange={handleChange} value={values.priority}>
+                                    <Select name="priority" onChange={handleChange} value={values.priority || ''}>
                                         <option value="low">Low</option>
                                         <option value="high">High</option>
                                         <option value="urgent">Urgent</option>
@@ -91,8 +91,8 @@ class ContentsEditForm extends Component {
                                 </Label>
                                 <Label>
                                     Done?
-                                    <input type='checkbox' name='done' value={values.done}
-                                           checked={values.done} onChange={handleChange} />
+                                    <input type='checkbox' name='done' value={values.done || ''}
+                                           checked={values.done || ''} onChange={handleChange} />
                                 </Label>
                                 <SubmitButton type="submit" disabled={this.state.disabled}>Update</SubmitButton>
                             </form>

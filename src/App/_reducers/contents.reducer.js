@@ -39,9 +39,10 @@ export function contents(state = {}, action) {
             };
 
         case contentsConstants.UPDATE_SUCCESS:
+
             return {
                 ...state,
-                items: doneUpdate(state, action.response)
+                items: newStateAfterUpdate(state, action.response)
             };
         case contentsConstants.UPDATE_FAILURE:
             return {
@@ -79,15 +80,16 @@ export function contents(state = {}, action) {
 }
 
 
-const doneUpdate = function (state, response) {
-    let arr = [];
-    state.items.forEach(function (k) {
-        if(k.id === response.id) {
-            k = response;
-            arr.push(k)
+const newStateAfterUpdate = function (state, response) {
+    let stateAfterUpdate = [];
+    state.items.forEach(function (value) {
+        if(value.id === response.id) {
+            value = Object.assign(value, response);
+            stateAfterUpdate.push(value)
         } else {
-            arr.push(k)
+            stateAfterUpdate.push(value)
         }
     });
-    return arr;
+
+    return stateAfterUpdate;
 };
