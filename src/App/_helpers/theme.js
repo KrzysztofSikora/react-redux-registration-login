@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export const ErrorMsg = styled.div`
     color: red;
-`
+`;
 
 export const SubmitButton = styled.button`
     display: block;
@@ -12,7 +12,7 @@ export const SubmitButton = styled.button`
     color: #fff;
     margin-bottom: 10px;
     background: #232632;
-`
+`;
 
 export const TextInput = styled.input`
     padding: 5px;
@@ -22,7 +22,7 @@ export const TextInput = styled.input`
     margin-right: 7px;
     border: 0px;
     -webkit-appearance: none;
-`
+`;
 
 export const Label = styled.label`
     display: flex;
@@ -31,7 +31,7 @@ export const Label = styled.label`
     font-size: 0.8em;
     margin: 0.5em 0;
     position: relative;
-`
+`;
 
 export const Select = styled.select`
     color: #d3d4d6;
@@ -39,7 +39,7 @@ export const Select = styled.select`
     background: #232632;
     border: 0px;
     height: 25px;
-`
+`;
 
 
 export const Button = styled.button`
@@ -75,13 +75,7 @@ export const Menu = styled.div`
     border-radius: 10px;
     padding: 5px;
     width: 400px;
-`
-
-// export const Link = styled.a `
-//     text-decoration: none;
-//     color: #992299
-//     margin-left: 5px;
-// `
+`;
 
 export const NavA = styled.a `
     text-decoration: none;
@@ -102,13 +96,10 @@ export const StyledLink = styled(Link)`
     border-right: 1px solid #333333;
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
-    
-    
-    
     &:hover {
     color: #fff;
     }
-`
+`;
 
 export const StyledEditLink = styled(Link)`
     color: palevioletred;
@@ -117,12 +108,11 @@ export const StyledEditLink = styled(Link)`
     &:hover {
     color: #fff;
     }
-`
+`;
 
 export const Header = styled.h3`
     color: #fffff;
 `;
-
 
 export const DestroyButton = styled.button `
    border-radius: 10px;
@@ -130,4 +120,4 @@ export const DestroyButton = styled.button `
    padding: 5px;
    color: #fff;
    margin-bottom: 10px;
-`
+`;

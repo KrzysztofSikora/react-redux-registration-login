@@ -1,10 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {UserList} from '../HomePage/UserList'
-import {todoService} from "../_services";
-import {userService} from "../_services";
-import { todoActions } from "../_actions";
-import { store } from "../_helpers"
 import { ContentsList } from "./ContentsList";
 class ContentPage extends React.Component {
     render() {
@@ -23,13 +18,12 @@ class ContentPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const {users, authentication, todo} = state;
+    const { users, authentication, todo } = state;
     const {user} = authentication;
     return {
         user,
         users,
         todo
-
     };
 }
 

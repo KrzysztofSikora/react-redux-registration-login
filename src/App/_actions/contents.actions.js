@@ -1,8 +1,6 @@
 import { contentsConstants } from '../_constants';
 import { contentsService } from '../_services';
 
-
-
 export const getOneContents = (id) =>
     async (dispatch) => {
         try {

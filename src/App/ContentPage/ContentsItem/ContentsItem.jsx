@@ -1,7 +1,7 @@
 import React from 'react';
-import {Component} from "react";
+import { Component } from "react";
 import styled from "styled-components";
-import { Link } from 'react-router-dom'
+
 import { StyledEditLink } from '../../_helpers/theme'
 
 const Item = styled.div`
@@ -24,7 +24,7 @@ const Button = styled.button`
 const HrLine = styled.hr`
     padding: 1px;
     border-color: palevioletred;
-`
+`;
 
 class ContentsItem extends Component {
 
