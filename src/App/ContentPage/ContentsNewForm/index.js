@@ -1,0 +1,1 @@
+export NewContentsForm from './NewContentsForm';
