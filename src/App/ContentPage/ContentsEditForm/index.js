@@ -1,0 +1,1 @@
+export ContentsEditForm from './ContentsEditForm';
